@@ -1,0 +1,43 @@
+[StartCode]
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSlight
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Random rand = new Random();
+            int number = rand.Next(0, 101);
+            int sumNumbers = 0;
+            int sumNumbers3 = 0;
+            int sumNumbers5 = 0;
+            int condition3 = 0;
+            int condition5 = 0;
+
+            Console.WriteLine(number);
+
+            while (condition3 <= number) 
+            {
+                sumNumbers3 += condition3;
+                condition3 += 3;
+            }
+
+            while (condition5 <= number)
+            {
+                sumNumbers5 += condition5;
+                condition5 += 5;
+                
+            }
+
+            sumNumbers = sumNumbers3 + sumNumbers5;
+            Console.WriteLine(sumNumbers);
+            Console.ReadKey();
+        }
+    }
+}
+[EndCode]
