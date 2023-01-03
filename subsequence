@@ -1,1 +1,26 @@
+[StartCode]
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
+namespace CSlight
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int number = 5;
+            int border = 100;
+
+            while (number < border)
+            {
+                Console.WriteLine(number);
+                number += 7;
+                Console.ReadKey();
+            }
+        }
+    }
+}
+[EndCode]
