@@ -23,6 +23,7 @@ namespace CSlight
             {
                 Console.WriteLine(message);
             }
+            
             Console.ReadKey();
         }
     }
