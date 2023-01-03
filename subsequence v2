@@ -10,7 +10,10 @@ namespace CSlight
     {
         static void Main(string[] args)
         {
-            for( int number = 5; number <=96; number += 7)
+
+            int step = 7;
+
+            for ( int number = 5; number <=96; number += step)
             {
                 Console.WriteLine(number);
             }
