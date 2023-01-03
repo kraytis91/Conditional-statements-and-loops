@@ -1,0 +1,31 @@
+[StartCode]
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSlight
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int number;
+            string exitProgram = "exit";
+            string userInput = "enter";
+
+            Console.Write("Привет! Эта программа прибавляет к вашему числу единицу. Введите ваше число: ");
+            number = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Для выхода из программы введите: exit");
+
+            while (exitProgram != userInput)
+            {
+                number += 1;
+                Console.WriteLine(number);
+                userInput = Console.ReadLine();
+            }
+        }
+    }
+}
+[EndCode]
