@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSlight
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Random rand = new Random();
+            int number = rand.Next(1, 101);
+            int count = 1;
+            int sumnumbers = 0;
+            int givenCondition3 = 3;
+            int givenCondition5 = 5;
+
+            while (count <= number)
+            {
+                if (((count % givenCondition3) == 0 ) || ((count % givenCondition5) == 0))
+                {
+                    sumnumbers += count;
+                    Console.WriteLine(count);
+                    count += 1;
+                }
+            }
+            Console.WriteLine(sumnumbers);
+            Console.ReadKey();
+        }
+    }
+}
