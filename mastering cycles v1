@@ -24,6 +24,7 @@ namespace CSlight
                 Console.WriteLine(message);
                 cycleCount += 1;
             }
+            
             Console.ReadKey();
         }
     }
