@@ -1,4 +1,3 @@
-[StartCode]
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +19,7 @@ namespace CSlight
             Console.Write("Введите количество сообщений: ");
             iterationMessageCount = Convert.ToInt32(Console.ReadLine());
 
-            for(cycleCount = 0; cycleCount < iterationMessageCount; cycleCount +=1)
+            for(cycleCount = 0; cycleCount < iterationMessageCount; cycleCount ++)
             {
                 Console.WriteLine(message);
             }
@@ -29,4 +28,4 @@ namespace CSlight
         }
     }
 }
-[EndCode]
+
