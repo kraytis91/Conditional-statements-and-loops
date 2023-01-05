@@ -1,0 +1,120 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSlight
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            const string commandCalculatorAddition = "+";
+            const string commandCalculatorSubtraction = "-";
+            const string commandCalculatorMultiplication = "*";
+            const string commandCalculatorDivision = "/";
+            const string commandSetName = "login";
+            const string commandSetPassword = "password";
+            const string commandAbout = "about";
+            const string commandExit = "exit";
+            string userCommand = "";
+            string userName = "";
+            string userPassword = "";
+            float numberArithmeticOperations1;
+            float numberArithmeticOperations2;
+            float resultArithmeticOperations;
+            int arithmeticCounter = 0;
+            int arithmeticCounterAddition = 0;
+            int arithmeticCounterSubtraction = 0;
+            int arithmeticCounterMultiplication = 0;
+            int arithmeticCounterDivision = 0;
+
+            Console.WriteLine("Приветствую тебя пользователь!");
+
+            while (userCommand != commandExit)
+            {
+                Console.WriteLine("Что ты хочешь сделать?" +
+                "\n \" + \" - Сложить числа" +
+                "\n \" - \" - Вычесть числа числа" +
+                "\n \" * \" - Умножить числа" +
+                "\n \" / \" - Разделить числа" +
+                "\n \"login\" - Установить имя пользователя" +
+                "\n \"password\" - Установить пароль пользователя" +
+                "\n \"about\" - Дашборт по использованию программы");
+                userCommand = Console.ReadLine();
+
+                switch (userCommand)
+                {
+                    case commandCalculatorAddition:
+                        Console.Write("Введите первое слагаемое: ");
+                        numberArithmeticOperations1 = Convert.ToSingle(Console.ReadLine());
+                        Console.Write("Введите второе слагаемое: ");
+                        numberArithmeticOperations2 = Convert.ToSingle(Console.ReadLine());
+                        resultArithmeticOperations = numberArithmeticOperations1 + numberArithmeticOperations2;
+                        arithmeticCounter ++;
+                        arithmeticCounterAddition ++;
+                        Console.WriteLine($"{numberArithmeticOperations1} + {numberArithmeticOperations2} = {resultArithmeticOperations}");
+                        break;
+
+                    case commandCalculatorSubtraction:
+                        Console.Write("Введите уменьшаемое: ");
+                        numberArithmeticOperations1 = Convert.ToSingle(Console.ReadLine());
+                        Console.Write("Введите вычитаемое: ");
+                        numberArithmeticOperations2 = Convert.ToSingle(Console.ReadLine());
+                        resultArithmeticOperations = numberArithmeticOperations1 - numberArithmeticOperations2;
+                        arithmeticCounter ++;
+                        arithmeticCounterSubtraction ++;
+                        Console.WriteLine($"{numberArithmeticOperations1} - {numberArithmeticOperations2} = {resultArithmeticOperations}");
+                        break;
+
+                    case commandCalculatorMultiplication:
+                        Console.Write("Введите 1й множитель: ");
+                        numberArithmeticOperations1 = Convert.ToSingle(Console.ReadLine());
+                        Console.Write("Введите 2й множитель: ");
+                        numberArithmeticOperations2 = Convert.ToSingle(Console.ReadLine());
+                        resultArithmeticOperations = numberArithmeticOperations1 * numberArithmeticOperations2;
+                        arithmeticCounter ++;
+                        arithmeticCounterMultiplication ++;
+                        Console.WriteLine($"{numberArithmeticOperations1} * {numberArithmeticOperations2} = {resultArithmeticOperations}");
+                        break;
+
+                    case commandCalculatorDivision:
+                        Console.Write("Введите делимое: ");
+                        numberArithmeticOperations1 = Convert.ToSingle(Console.ReadLine());
+                        Console.Write("Введите делитель: ");
+                        numberArithmeticOperations2 = Convert.ToSingle(Console.ReadLine());
+                        resultArithmeticOperations = numberArithmeticOperations1 / numberArithmeticOperations2;
+                        arithmeticCounter ++;
+                        arithmeticCounterDivision ++;
+                        Console.WriteLine($"{numberArithmeticOperations1} * {numberArithmeticOperations2} = {resultArithmeticOperations}");
+                        break;
+
+                    case commandSetName:
+                        Console.Write("Введите ваше имя: ");
+                        userName = Console.ReadLine();
+                        Console.WriteLine($"Ваше имя - {userName}");
+                        break;
+
+                    case commandSetPassword:
+                        Console.Write("Установка пароля, введите пароль: ");
+                        userPassword = Console.ReadLine();
+                        Console.WriteLine($"Ваше пароль - {userPassword}");
+                        break;
+
+                    case commandAbout:
+                        Console.WriteLine($"Всего было выполнено {arithmeticCounter} арифметических операций " +
+                            $"\n Сложения: {arithmeticCounterAddition} " +
+                            $"\n Вычитания: {arithmeticCounterSubtraction} " +
+                            $"\n Умножения: {arithmeticCounterMultiplication} " +
+                            $"\n Деления: {arithmeticCounterDivision}");
+                        break;
+                }
+                Console.WriteLine("Для завершения работы программы введите \"exit\", для продолжения работы введите \"continue\"");
+                userCommand = Console.ReadLine();
+            }
+
+            Console.ReadKey();
+        }
+    }
+}
