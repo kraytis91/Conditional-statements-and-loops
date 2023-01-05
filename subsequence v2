@@ -12,10 +12,11 @@ namespace CSlight
         {
             int step = 7;
             int border = 96;
+            int startingNumber = 5;
 
-            for ( int number = 5; number <= border; number += step)
+            for (int i = 5 ; startingNumber <= border; startingNumber += step)
             {
-                Console.WriteLine(number);
+                Console.WriteLine(startingNumber);
             }
 
             Console.ReadKey();
