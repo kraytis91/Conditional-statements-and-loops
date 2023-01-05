@@ -14,9 +14,9 @@ namespace CSlight
             int border = 96;
             int startingNumber = 5;
 
-            for (int i = 5 ; startingNumber <= border; startingNumber += step)
+            for (int i = startingNumber; i <= border; i += step)
             {
-                Console.WriteLine(startingNumber);
+                Console.WriteLine(i);
             }
 
             Console.ReadKey();
