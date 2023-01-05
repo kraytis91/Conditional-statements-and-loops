@@ -11,14 +11,15 @@ namespace CSlight
         static void Main(string[] args)
         {
             Random random = new Random();
-            int number = random.Next(1, 101);
-            int count = 1;
+            int border = 101;
+            int number = random.Next(1, border);
+            int count = 0;
             int sumNumbers = 0;
             int divisor1 = 3;
             int divisor2 = 5;
             Console.WriteLine(number);
 
-            for(int i = number; i >= count; count++)
+            for (int i = number; i >= count; count++)
             {
                 if ((count % divisor1 == 0) || (count % divisor2 == 0))
                 {
