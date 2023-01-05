@@ -150,8 +150,8 @@ namespace CSlight
                             Console.WriteLine("Недопустимое количество евро");
                         }
                         break;
-
                 }
+                
                 Console.WriteLine($"Ваш баланс: {rub} рублей, {usd} долларов, {euro} евро");
                 Console.WriteLine("Для завершения работы программы введите \"exit\", для продолжения работы введите \"continue\"");
                 userInputCommand = Console.ReadLine();
