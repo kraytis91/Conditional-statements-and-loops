@@ -10,20 +10,22 @@ namespace CSlight
     {
         static void Main(string[] args)
         {
+            const int number2 = 2;
+
             Random random = new Random();
             int maxBorder = 46340;
-            int N = random.Next(1, maxBorder);
-            int minimumDegreeTwo = 2;
-            int degreeTwo = 2;
-            int degree = 1; 
+            int minBorder = 1;
+            int number = random.Next(minBorder, maxBorder);
+            int multiplier = 2;
+            int degree = 1;
 
-            while (N > minimumDegreeTwo)
+            while (number > multiplier)
             {
-                minimumDegreeTwo *= degreeTwo;
+                multiplier *= number2;
                 degree++;
             }
 
-            Console.WriteLine($"Минимальная степпень 2ки превосходящая число {N} = {degree}, 2^{degree}={minimumDegreeTwo} ");
+            Console.WriteLine($" {number} - число. Минимальная степпень 2ки превосходящая число - {degree}, {number2}^{degree}={multiplier} ");
             Console.ReadKey();
         }
     }
