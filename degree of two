@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSlight
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            int N = random.Next(1, 46340);
+            int minimumDegreeTwo = 2;
+            int degreeTwo = 2;
+            int degree = 1; 
+
+            while (N > minimumDegreeTwo)
+            {
+                minimumDegreeTwo *= degreeTwo;
+                degree++;
+            }
+
+            Console.WriteLine($"Минимальная степпень 2ки превосходящая число {N} = {degree}, 2^{degree}={minimumDegreeTwo} ");
+            Console.ReadKey();
+        }
+    }
+}
