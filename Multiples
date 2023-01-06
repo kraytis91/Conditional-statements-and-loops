@@ -11,7 +11,9 @@ namespace CSlight
         static void Main(string[] args)
         {
             Random random = new Random();
-            int N = random.Next(1, 28);
+            int minNumber = 1;
+            int maxNumber = 28;
+            int number = random.Next(minNumber, maxNumber);
             int counter = 0;
             int sumNumbers = 0;
             int maxBorder = 1000;
@@ -19,16 +21,15 @@ namespace CSlight
 
             while (sumNumbers < maxBorder)
             {
-                
                 if (minBorder < sumNumbers)
                 {
                     counter++;
                 }
-                
-                sumNumbers += N;
+
+                sumNumbers += number;
             }
 
-            Console.WriteLine($"Количество трехзначных натуральных чисел, которые кратны {N} = {counter}");
+            Console.WriteLine($"Количество трехзначных натуральных чисел, которые кратны {number} = {counter}");
             Console.ReadKey();
         }
     }
