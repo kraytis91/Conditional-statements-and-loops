@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSlight
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            int N = random.Next(1, 28);
+            int counter = 0;
+            int sumNumbers = 0;
+            int maxBorder = 1000;
+            int minBorder = 100;
+
+            while (sumNumbers < maxBorder)
+            {
+                
+                if (minBorder < sumNumbers)
+                {
+                    counter++;
+                }
+                
+                sumNumbers += N;
+            }
+
+            Console.WriteLine($"Количество трехзначных натуральных чисел, которые кратны {N} = {counter}");
+            Console.ReadKey();
+        }
+    }
+}
