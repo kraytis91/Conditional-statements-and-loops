@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSlight
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string symbol = "";
+            string name = "";
+            int lengthName;
+            string fullBorder = "";
+            int additionalBorder = 2;
+
+            Console.Write("Введите символ:");
+            symbol = Console.ReadLine();
+            Console.Write("Введите имя:");
+            name = Console.ReadLine();
+            lengthName = name.Length;
+            additionalBorder += lengthName;
+            fullBorder = string.Concat(Enumerable.Repeat(symbol, additionalBorder));
+            Console.WriteLine($"{fullBorder}\n" +
+                $"{symbol}{name}{symbol}\n" +
+                $"{fullBorder}");
+            
+            Console.ReadKey();
+        }
+    }
+}
