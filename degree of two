@@ -11,7 +11,8 @@ namespace CSlight
         static void Main(string[] args)
         {
             Random random = new Random();
-            int N = random.Next(1, 46340);
+            int maxBorder = 46340;
+            int N = random.Next(1, maxBorder);
             int minimumDegreeTwo = 2;
             int degreeTwo = 2;
             int degree = 1; 
