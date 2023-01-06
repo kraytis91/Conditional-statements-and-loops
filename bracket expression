@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSlight
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string someString = "";
+            char leftBrace = (();
+            string rightBrace = ")";
+            char c = leftBrace.ToCharArray(leftBrace);
+
+            Console.Write($"Введите символы \"(\" и \")\":");
+            someString = Console.ReadLine();
+
+            for (int i = 0; i < someString.Length; i++)
+            {
+                if (someString[i] == c)
+                {
+
+                }
+            } 
+
+                Console.ReadKey();
+        }
+    }
+}
