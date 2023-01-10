@@ -10,12 +10,15 @@ namespace CSlight
     {
         static void Main(string[] args)
         {
-            const string Spell1 = "Фаербол";
-            const string Spell2 = "Звездопад";
-            const string Spell3 = "Зазеркалье";
-            const string Spell4 = "Ядовитая инверсия";
+            const string CommandSpell1 = "Фаербол";
+            const string CommandSpell2 = "Звездопад";
+            const string CommandSpell3 = "Зазеркалье";
+            const string CommandSpell4 = "Ядовитая инверсия";
 
             int playerHealth = 700;
+            int maxPlayerHealth = 700;
+            int newPlayerHealth;
+            int restoredHealth;
             int minDamageSpell1 = 75;
             int maxDamageSpell1 = 150;
             Random randomDamageSpell1 = new Random();
@@ -32,18 +35,19 @@ namespace CSlight
             int maxDamageSpell4 = 120;
             Random randomDamageSpell4 = new Random();
             int damageSpell4;
+            int numberSpell4Cycles = 5;
             string previousSpell = "";
             string playerCommand = "";
-            bool inversionIsOn = false;
+            bool isInversionOn = false;
             int counterInversion = 0;
             int minEnemyHealth = 900;
             int maxEnemyHealth = 1500;
             int minEnemyDamage = 25;
             int maxEnemyDamage = 150;
             int deadLine = 0;
-            Random randonEnemyHealth = new Random();
+            Random randomEnemyHealth = new Random();
             Random randomEnemyDamage = new Random();
-            int enemyHealth = randonEnemyHealth.Next(minEnemyHealth,maxEnemyHealth);
+            int enemyHealth = randomEnemyHealth.Next(minEnemyHealth,maxEnemyHealth);
             int enemyDamage;
 
 
@@ -64,49 +68,67 @@ namespace CSlight
 
                 switch (playerCommand)
                 {
-                    case Spell1:
+                    case CommandSpell1:
                         damageSpell1 = randomDamageSpell1.Next(minDamageSpell1, maxDamageSpell1);
                         enemyHealth -= damageSpell1;
-                        Console.WriteLine($"{Spell1} нанес {damageSpell1} урона, у Орка осталось {enemyHealth} жизней.");
-                        previousSpell = Spell1;
+                        Console.WriteLine($"{CommandSpell1} нанес {damageSpell1} урона, у Орка осталось {enemyHealth} жизней.");
+                        previousSpell = CommandSpell1;
                         break;
-                    case Spell2:
-                        if(previousSpell == Spell1)
+                    
+                    case CommandSpell2:
+                        
+                        if(previousSpell == CommandSpell1)
                         {
                             damageSpell2 = randomDamageSpell2.Next(minDamageSpell2, maxDamageSpell2);
                             enemyHealth -= damageSpell2;
-                            Console.WriteLine($"{Spell2} нанес {damageSpell2} урона, у Орка осталось {enemyHealth} жизней.");
-                            previousSpell = Spell2;
+                            Console.WriteLine($"{CommandSpell2} нанес {damageSpell2} урона, у Орка осталось {enemyHealth} жизней.");
+                            previousSpell = CommandSpell2;
                             break;
                         }
                         else
                         {
-                            Console.WriteLine($"Ты пытаешься вызвать {Spell2}, но терпишь неудачу," +
-                                $" так как ты в прошлый раз колдовал не {Spell1}.");
+                            Console.WriteLine($"Ты пытаешься вызвать {CommandSpell2}, но терпишь неудачу," +
+                                $" так как ты в прошлый раз колдовал не {CommandSpell1}.");
                         }
                         break;
-                    case Spell3:
+                    
+                    case CommandSpell3:
+                        
                         healthSpell3 = randomHealthSpell3.Next(minHealthSpell3, maxHealthSpell3);
-                        playerHealth += healthSpell3;
-                        Console.WriteLine($"Ты восстанавливаешь {healthSpell3} жизней, всего у тебя {playerHealth} жизней.");
-                        previousSpell = Spell3;
+                        newPlayerHealth = playerHealth + healthSpell3;
+                        
+                        if (newPlayerHealth >= maxPlayerHealth)
+                        {
+                            restoredHealth = maxPlayerHealth - playerHealth;
+                            playerHealth = maxPlayerHealth;
+                            
+                        }
+                        else
+                        {
+                            restoredHealth = healthSpell3;
+                            playerHealth += healthSpell3;
+                        }
+                        Console.WriteLine($"Ты восстанавливаешь {restoredHealth} жизней, всего у тебя {playerHealth} жизней.");
+                        previousSpell = CommandSpell3;
                         break;
-                    case Spell4:
-                        if (previousSpell == Spell3)
+                    
+                    case CommandSpell4:
+                        
+                        if (previousSpell == CommandSpell3)
                         {
                             damageSpell4 = randomDamageSpell4.Next(minDamageSpell4, maxDamageSpell4);
                             enemyHealth -= damageSpell4;
                             playerHealth -= damageSpell4;
-                            Console.WriteLine($"{Spell4} нанесла {damageSpell4} урона тебе и Орку. У Орка осталось {enemyHealth} жизней, у тебя - {playerHealth}.");
-                            previousSpell = Spell4;
-                            inversionIsOn = true;
+                            Console.WriteLine($"{CommandSpell4} нанесла {damageSpell4} урона тебе и Орку. У Орка осталось {enemyHealth} жизней, у тебя - {playerHealth}.");
+                            previousSpell = CommandSpell4;
+                            isInversionOn = true;
                             counterInversion = 0;
                             break;
                         }
                         else
                         {
-                            Console.WriteLine($"Ты пытаешься наложить заклинание {Spell4}, но терпишь неудачу," +
-                                $" так как ты в прошлый раз колдовал не {Spell3}.");
+                            Console.WriteLine($"Ты пытаешься наложить заклинание {CommandSpell4}, но терпишь неудачу," +
+                                $" так как ты в прошлый раз колдовал не {CommandSpell3}.");
                         }
                         break;
                 }
@@ -115,27 +137,28 @@ namespace CSlight
                 playerHealth -= enemyDamage;
                 Console.WriteLine($"Орк наносит тебе {enemyDamage} урона, у тебя осталось {playerHealth} жизней.");
 
-                if (inversionIsOn && counterInversion <= 5)
+                if (isInversionOn && counterInversion <= numberSpell4Cycles)
                 {
                     counterInversion++;
                     damageSpell4 = randomDamageSpell4.Next(minDamageSpell4, maxDamageSpell4);
                     enemyHealth -= damageSpell4;
-                    Console.WriteLine($"Орк получает {damageSpell4} урона от заклинания {Spell4}. У Орка {enemyHealth} жизней.");
-                }
-
-                if (enemyHealth <= 0 && playerHealth <= 0)
-                {
-                    Console.WriteLine($"Вы дрались не на жизнь, а на смерть. Ничья.");
-                }
-                else if (enemyHealth <= 0)
-                {
-                    Console.WriteLine($"Ты победил! У тебя осталось {playerHealth} жизней.");
-                }
-                else if (playerHealth <= 0)
-                {
-                    Console.WriteLine($"Ты проиграл! У Орка осталось {enemyHealth} жизней.");
+                    Console.WriteLine($"Орк получает {damageSpell4} урона от заклинания {CommandSpell4}. У Орка {enemyHealth} жизней.");
                 }
             }
+
+            if (enemyHealth <= 0 && playerHealth <= 0)
+            {
+                Console.WriteLine($"Вы дрались не на жизнь, а на смерть. Ничья.");
+            }
+            else if (enemyHealth <= 0)
+            {
+                Console.WriteLine($"Ты победил! У тебя осталось {playerHealth} жизней.");
+            }
+            else if (playerHealth <= 0)
+            {
+                Console.WriteLine($"Ты проиграл! У Орка осталось {enemyHealth} жизней.");
+            }
+
             Console.ReadKey();
         }
     }
