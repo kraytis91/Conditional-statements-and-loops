@@ -15,25 +15,22 @@ namespace CSlight
             const string CommandSpell3 = "Зазеркалье";
             const string CommandSpell4 = "Ядовитая инверсия";
 
+            Random random = new Random();
             int playerHealth = 700;
             int maxPlayerHealth = 700;
             int newPlayerHealth;
             int restoredHealth;
             int minDamageSpell1 = 75;
             int maxDamageSpell1 = 150;
-            Random randomDamageSpell1 = new Random();
             int damageSpell1;
             int minDamageSpell2 = 150;
             int maxDamageSpell2 = 190;
-            Random randomDamageSpell2 = new Random();
             int damageSpell2;
             int minHealthSpell3 = 80;
             int maxHealthSpell3 = 120;
-            Random randomHealthSpell3 = new Random();
             int healthSpell3;
             int minDamageSpell4 = 80;
             int maxDamageSpell4 = 120;
-            Random randomDamageSpell4 = new Random();
             int damageSpell4;
             int numberSpell4Cycles = 5;
             string previousSpell = "";
@@ -45,9 +42,7 @@ namespace CSlight
             int minEnemyDamage = 25;
             int maxEnemyDamage = 150;
             int deadLine = 0;
-            Random randomEnemyHealth = new Random();
-            Random randomEnemyDamage = new Random();
-            int enemyHealth = randomEnemyHealth.Next(minEnemyHealth,maxEnemyHealth);
+            int enemyHealth = random.Next(minEnemyHealth,maxEnemyHealth);
             int enemyDamage;
 
 
@@ -69,7 +64,7 @@ namespace CSlight
                 switch (playerCommand)
                 {
                     case CommandSpell1:
-                        damageSpell1 = randomDamageSpell1.Next(minDamageSpell1, maxDamageSpell1);
+                        damageSpell1 = random.Next(minDamageSpell1, maxDamageSpell1);
                         enemyHealth -= damageSpell1;
                         Console.WriteLine($"{CommandSpell1} нанес {damageSpell1} урона, у Орка осталось {enemyHealth} жизней.");
                         previousSpell = CommandSpell1;
@@ -79,7 +74,7 @@ namespace CSlight
                         
                         if(previousSpell == CommandSpell1)
                         {
-                            damageSpell2 = randomDamageSpell2.Next(minDamageSpell2, maxDamageSpell2);
+                            damageSpell2 = random.Next(minDamageSpell2, maxDamageSpell2);
                             enemyHealth -= damageSpell2;
                             Console.WriteLine($"{CommandSpell2} нанес {damageSpell2} урона, у Орка осталось {enemyHealth} жизней.");
                             previousSpell = CommandSpell2;
@@ -94,7 +89,7 @@ namespace CSlight
                     
                     case CommandSpell3:
                         
-                        healthSpell3 = randomHealthSpell3.Next(minHealthSpell3, maxHealthSpell3);
+                        healthSpell3 = random.Next(minHealthSpell3, maxHealthSpell3);
                         newPlayerHealth = playerHealth + healthSpell3;
                         
                         if (newPlayerHealth >= maxPlayerHealth)
@@ -116,7 +111,7 @@ namespace CSlight
                         
                         if (previousSpell == CommandSpell3)
                         {
-                            damageSpell4 = randomDamageSpell4.Next(minDamageSpell4, maxDamageSpell4);
+                            damageSpell4 = random.Next(minDamageSpell4, maxDamageSpell4);
                             enemyHealth -= damageSpell4;
                             playerHealth -= damageSpell4;
                             Console.WriteLine($"{CommandSpell4} нанесла {damageSpell4} урона тебе и Орку. У Орка осталось {enemyHealth} жизней, у тебя - {playerHealth}.");
@@ -133,14 +128,14 @@ namespace CSlight
                         break;
                 }
 
-                enemyDamage = randomEnemyDamage.Next(minEnemyDamage, maxEnemyDamage);
+                enemyDamage = random.Next(minEnemyDamage, maxEnemyDamage);
                 playerHealth -= enemyDamage;
                 Console.WriteLine($"Орк наносит тебе {enemyDamage} урона, у тебя осталось {playerHealth} жизней.");
 
                 if (isInversionOn && counterInversion <= numberSpell4Cycles)
                 {
                     counterInversion++;
-                    damageSpell4 = randomDamageSpell4.Next(minDamageSpell4, maxDamageSpell4);
+                    damageSpell4 = random.Next(minDamageSpell4, maxDamageSpell4);
                     enemyHealth -= damageSpell4;
                     Console.WriteLine($"Орк получает {damageSpell4} урона от заклинания {CommandSpell4}. У Орка {enemyHealth} жизней.");
                 }
